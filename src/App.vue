@@ -1,32 +1,62 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-main 
+      v-for="(i) in 5"
+      :key="i"
+      >  
+      <div class="text-center">
+        
+        <v-dialog
+          width="800"
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              color="red lighten-2"
+              width="800"
+              dark
+              v-bind="attrs"
+              v-on="on"
+            >
+              Click Me
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-card-title class="blue">
+              Privacy Policy
+            </v-card-title>
+
+            <v-card-text>
+              Lokomotiv Moscow
+            </v-card-text>
+
+            <v-divider></v-divider>
+
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                color="primary"
+                text
+                click="dialog = false"
+              >
+                I accept
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
 
-#nav {
-  padding: 30px;
-}
+export default {
+  
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+  data: () => ({
+    //
+    dialog:false
+  }),
+};
+</script>
